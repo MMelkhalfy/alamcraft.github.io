@@ -103,8 +103,20 @@
 إنذار🟩 ⬅️ إنذار🟨 ⬅️ طرد🟥<br></p>
       <h3>👑 المشرفين:</h3>
       <p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
-      <h3>👥 اللاعبين:</h3>
-      <p>مجهولين ⛔️</p>
+      <<p> 🟢 عدد اللاعبين المتصلين: <span id="players">جاري التحميل...</span></p>
+
+<script>
+fetch("https://api.mcsrvstat.us/2/alameldin.aternos.me:28303")
+.then(response => response.json())
+.then(data => {
+    if (data.online) {
+        document.getElementById("players").innerText =
+            data.players.online + " / " + data.players.max;
+    } else {
+        document.getElementById("players").innerText = "السيرفر مغلق";
+    }
+});
+</script>
     </div>
 
     <h2>🔗 روابط السرفر</h2>
