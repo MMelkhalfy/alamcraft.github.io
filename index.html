@@ -103,7 +103,28 @@
 إنذار🟩 ⬅️ إنذار🟨 ⬅️ طرد🟥<br></p>
       <h3>👑 المشرفين:</h3>
       <p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
-<title>حالة السيرفر</title>    </div>
+      <p id="status">جاري الفحص...</p>
+<p id="count"></p>
+<ul id="players"></ul>
+
+<script>
+fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303")
+.then(r=>r.json())
+.then(d=>{
+document.getElementById("status").textContent =
+d.online ? "🟢 متصل" : "🔴 متوقف";
+
+document.getElementById("count").textContent =
+d.online ? "عدد المتصلين: "+d.players.online+"/"+d.players.max : "";
+
+document.getElementById("players").innerHTML =
+d.online && d.players.list ? d.players.list.map(p=>"<li>"+p+"</li>").join("") : "";
+})
+.catch(()=>{
+document.getElementById("status").textContent="🟡 يجري البدء...";
+});
+  </script>
+    </div>
 
     <h2>🔗 روابط السرفر</h2>
     <p>🛏️ <a href="https://add.aternos.org/Alameldin">إضافة السرفر في Minecraft Bedrock</a></p>
