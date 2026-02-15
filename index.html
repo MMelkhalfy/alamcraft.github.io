@@ -103,11 +103,62 @@
 إنذار🟩 ⬅️ إنذار🟨 ⬅️ طرد🟥<br></p>
       <h3>👑 المشرفين:</h3>
       <p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
-      <p> عدد اللاعبين المتصلين🟢: <span id="players">جاري التحميل...</span></p>
+<title>حالة السيرفر</title>
+<style>
+body {
+font-family: Arial;
+background: #111;
+color: white;
+text-align: center;
+}
+
+#box {
+background: #1b1b1b;
+padding: 15px;
+border-radius: 10px;
+width: 300px;
+margin: auto;
+}
+
+ul {
+list-style: none;
+padding: 0;
+}
+
+li {
+background: #2a2a2a;
+margin: 5px;
+padding: 5px;
+border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<div id="box">
+
+<h3>حالة السيرفر</h3>
+
+<p id="status">🔄 جاري الفحص...</p>
+
+<p>
+عدد اللاعبين: <span id="players">0 / 0</span>
+</p>
+
+<p>المتصلين:</p>
+
+<ul id="player-list">
+<li>جاري الفحص...</li>
+</ul>
+
+</div>
+
 <script>
-const ip = "alameldin.aternos.me:28303";
+
+const ip = "Alameldin.aternos.me:28303";
 
 let lastOnline = false;
+let stopping = false;
 
 async function updateServer() {
 
@@ -119,19 +170,27 @@ status.innerHTML = "🔄 جاري الفحص...";
 
 try {
 
-const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303);
+const res = await fetch("https://api.mcsrvstat.us/2/" + ip);
 const data = await res.json();
 
 if (data.online) {
 
-// لو كان مغلق وبقى مفتوح → جاري التشغيل
-if (!lastOnline) {
+if (stopping || !lastOnline) {
+
 status.innerHTML = "🟡 جاري التشغيل...";
+
 setTimeout(() => {
+
 status.innerHTML = "🟢 يعمل";
+
 }, 3000);
+
+stopping = false;
+
 } else {
+
 status.innerHTML = "🟢 يعمل";
+
 }
 
 players.innerHTML =
@@ -142,9 +201,13 @@ list.innerHTML = "";
 if (data.players.list && data.players.list.length > 0) {
 
 data.players.list.forEach(player => {
+
 const li = document.createElement("li");
+
 li.textContent = "🧑 " + player;
+
 list.appendChild(li);
+
 });
 
 } else {
@@ -157,8 +220,26 @@ lastOnline = true;
 
 } else {
 
+if (lastOnline) {
+
+status.innerHTML = "⏳ جاري الإيقاف...";
+
+setTimeout(() => {
+
 status.innerHTML = "🔴 مغلق";
+
+}, 3000);
+
+stopping = true;
+
+} else {
+
+status.innerHTML = "🔴 مغلق";
+
+}
+
 players.innerHTML = "0 / 0";
+
 list.innerHTML = "<li>السيرفر مغلق</li>";
 
 lastOnline = false;
@@ -167,8 +248,10 @@ lastOnline = false;
 
 } catch {
 
-status.innerHTML = "⚠️ خطأ في الاتصال";
+status.innerHTML = "🚧 تحت الصيانة";
+
 players.innerHTML = "? / ?";
+
 list.innerHTML = "<li>تعذر الاتصال بالسيرفر</li>";
 
 }
@@ -176,7 +259,9 @@ list.innerHTML = "<li>تعذر الاتصال بالسيرفر</li>";
 }
 
 updateServer();
+
 setInterval(updateServer, 5000);
+
 </script>
     </div>
 
