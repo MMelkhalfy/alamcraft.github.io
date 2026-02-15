@@ -78,7 +78,7 @@
   <div class="container">
     <h1>مرحب بكم في سيرفر علم كرافت ☘️</h1>
     <p>🖥️📱 الجافا: Alameldin.aternos.me:28303</p>
-    <p>☕️ إصدار الجافا: 1.8 - 1.21.11</p>
+    <p>☕️ إصدار الجافا: 1.7 - 1.21.11</p>
     <p>🛏️ إصدار البيدروك:1.21.111 - 26.0</p>
 
     <button onclick="window.location.href='https://add.aternos.org/Alameldin'">إضافة السرفر في Minecraft Bedrock</button>
@@ -104,18 +104,79 @@
       <h3>👑 المشرفين:</h3>
       <p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
       <p> عدد اللاعبين المتصلين🟢: <span id="players">جاري التحميل...</span></p>
-
 <script>
-fetch("https://api.mcsrvstat.us/2/alameldin.aternos.me:28303")
-.then(response => response.json())
-.then(data => {
-    if (data.online) {
-        document.getElementById("players").innerText =
-            data.players.online + " / " + data.players.max;
-    } else {
-        document.getElementById("players").innerText = "السيرفر مغلق";
-    }
+const ip = "alameldin.aternos.me:28303";
+
+let lastOnline = false;
+
+async function updateServer() {
+
+const status = document.getElementById("status");
+const players = document.getElementById("players");
+const list = document.getElementById("player-list");
+
+status.innerHTML = "🔄 جاري الفحص...";
+
+try {
+
+const res = await fetch("https://api.mcsrvstat.us/2/" + ip);
+const data = await res.json();
+
+if (data.online) {
+
+// لو كان مغلق وبقى مفتوح → جاري التشغيل
+if (!lastOnline) {
+status.innerHTML = "🟡 جاري التشغيل...";
+setTimeout(() => {
+status.innerHTML = "🟢 يعمل";
+}, 3000);
+} else {
+status.innerHTML = "🟢 يعمل";
+}
+
+players.innerHTML =
+data.players.online + " / " + data.players.max;
+
+list.innerHTML = "";
+
+if (data.players.list && data.players.list.length > 0) {
+
+data.players.list.forEach(player => {
+const li = document.createElement("li");
+li.textContent = "🧑 " + player;
+list.appendChild(li);
 });
+
+} else {
+
+list.innerHTML = "<li>لا يوجد لاعبين</li>";
+
+}
+
+lastOnline = true;
+
+} else {
+
+status.innerHTML = "🔴 مغلق";
+players.innerHTML = "0 / 0";
+list.innerHTML = "<li>السيرفر مغلق</li>";
+
+lastOnline = false;
+
+}
+
+} catch {
+
+status.innerHTML = "⚠️ خطأ في الاتصال";
+players.innerHTML = "? / ?";
+list.innerHTML = "<li>تعذر الاتصال بالسيرفر</li>";
+
+}
+
+}
+
+updateServer();
+setInterval(updateServer, 5000);
 </script>
     </div>
 
