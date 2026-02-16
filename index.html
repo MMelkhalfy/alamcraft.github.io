@@ -104,7 +104,11 @@
   <ul id="online-players" style="list-style:none;padding:0;"></ul>
 </div>
 <script defer>
-async function document.addEventListener("DOMContentLoaded", loadOnlinePlayers);
+  async function loadOnlinePlayers() {
+document.addEventListener("DOMContentLoaded", function() {
+  loadOnlinePlayers();
+  setInterval(loadOnlinePlayers, 10000);
+});
   try {
     const res = await fetch("https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?nocache=" + Date.now());
     const data = await res.json();
@@ -165,8 +169,10 @@ count.dir = "ltr";
   }
 }
 
-loadOnlinePlayers();
-setInterval(loadOnlinePlayers, 10000);
+document.addEventListener("DOMContentLoaded", function() {
+  loadOnlinePlayers();
+  setInterval(loadOnlinePlayers, 10000);
+});
 </script>
 </div>
 
