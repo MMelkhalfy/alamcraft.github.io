@@ -113,7 +113,7 @@
 <script>
 async function loadOnlinePlayers() {
   try {
-    const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303");
+    const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303?nocache=" + Date.now());
     const data = await res.json();
 
     const status = document.getElementById("status");
@@ -169,9 +169,11 @@ async function loadOnlinePlayers() {
       count.textContent = "0";
       list.innerHTML = "<li>السيرفر مغلق</li>";
     }
-
-  } catch {
-    document.getElementById("status").textContent = "خطأ";
+} catch {
+  document.getElementById("status").textContent = "مغلق 🔴";
+  document.getElementById("count").textContent = "0";
+  document.getElementById("online-players").innerHTML = "<li>السيرفر مغلق</li>";
+  }
   }
 }
 
