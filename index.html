@@ -10,6 +10,8 @@
 <meta property="og:image" content="https://alamcraft.github.io/images/OIG1.png">
 <meta property="og:url" content="https://alamcraft.github.io">
 <meta property="og:type" content="website">
+  <meta name="theme-color" content="#4CAF50">
+  <meta name="robots" content="index, follow">
   <link rel="icon" type="image/png" href="images/OIG1.png">
   <style>
     body {
@@ -180,20 +182,18 @@ setInterval(loadOnlinePlayers, 10000);
 
   <script>
     const modeBtn = document.getElementById('modeBtn');
-    const body = document.body;
+const body = document.body;
 
-    if (localStorage.getItem('mode') === 'dark') {
-      body.classList.add('dark-mode');
+if (modeBtn) {
+  modeBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('mode', 'dark');
+    } else {
+      localStorage.setItem('mode', 'light');
     }
-
-    modeBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('mode', 'dark');
-      } else {
-        localStorage.setItem('mode', 'light');
-      }
-    });
-  </script>
+  });
+}
+</script>
 </body>
 </html>
