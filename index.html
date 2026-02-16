@@ -107,7 +107,7 @@
 <script defer>
 async function loadOnlinePlayers() {
   try {
-    const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303?nocache=" + Date.now(), { cache: "no-store" });
+    const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me?nocache=" + Date.now(), { cache: "no-store" });
     const data = await res.json();
 
     const status = document.getElementById("status");
