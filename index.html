@@ -120,6 +120,7 @@ async function loadOnlinePlayers() {
       status.textContent = "متصل 🟢";
 
       count.textContent = data.players.online + " / " + data.players.max;
+count.dir = "ltr";
 
       if (data.players.list && data.players.list.length > 0) {
 
