@@ -2,6 +2,15 @@
 <html lang="ar" dir="rtl">
 <head>
   <title>علم كرافت ☘️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="سيرفر علم كرافت Minecraft - انضم الآن واستمتع باللعب الجماعي مع الأصدقاء">
+  <meta property="og:title" content="علم كرافت ☘️">
+<meta property="og:description" content="انضم الآن إلى سيرفر علم كرافت Minecraft واستمتع باللعب مع الأصدقاء">
+<meta property="og:image" content="https://alamcraft.github.io/images/OIG1.png">
+<meta property="og:url" content="https://alamcraft.github.io">
+<meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="images/OIG1.png">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -150,7 +159,8 @@ async function loadOnlinePlayers() {
   document.getElementById("status").textContent = "مغلق 🔴";
   document.getElementById("count").textContent = "0";
   document.getElementById("online-players").innerHTML = "<li>السيرفر مغلق</li>";
-  }
+}
+}
 
 loadOnlinePlayers();
 setInterval(loadOnlinePlayers, 5000);
