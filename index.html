@@ -122,9 +122,15 @@ async function loadOnlinePlayers() {
 
     list.innerHTML = "";
 
-    if (data.online && data.players && data.players.max > 0) {
-      status.textContent = "متصل 🟢";
-      count.textContent = data.players.online + " / " + data.players.max;
+    if (data.online) {
+
+  status.textContent = "متصل 🟢";
+
+  if (data.players) {
+    count.textContent = data.players.online + " / " + data.players.max;
+  } else {
+    count.textContent = "0";
+  }
 
       if (data.players.list && data.players.list.length > 0) {
 
