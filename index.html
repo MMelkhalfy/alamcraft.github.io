@@ -52,13 +52,17 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .rules {
-      text-align: right;
-      direction: rtl;
-      background: rgba(0,0,0,0.05);
-      padding: 15px;
-      border-radius: 12px;
-      margin-top: 15px;
+.rules {
+  text-align: right;
+  direction: rtl;
+  background: rgba(0,0,0,0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+#online-players-box {
+  margin-top: 15px;
     }
   </style>
 </head>
@@ -98,7 +102,7 @@
   <ul id="online-players" style="list-style:none;padding:0;"></ul>
 </div>
 
-<script>
+<script defer>
 async function loadOnlinePlayers() {
   try {
     const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303?nocache=" + Date.now());
@@ -183,7 +187,10 @@ setInterval(loadOnlinePlayers, 10000);
   <script>
     const modeBtn = document.getElementById('modeBtn');
 const body = document.body;
-
+const savedMode = localStorage.getItem('mode');
+if (savedMode === 'dark') {
+  body.classList.add('dark-mode');
+    }
 if (modeBtn) {
   modeBtn.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
