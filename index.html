@@ -103,11 +103,10 @@
   <p>📋 اللاعبين المتصلين:</p>
   <ul id="online-players" style="list-style:none;padding:0;"></ul>
 </div>
-
 <script defer>
 async function loadOnlinePlayers() {
   try {
-    const res = await fetch("https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?nocache=" + Date.now(), { cache: "no-store" });
+    const res = await fetch("https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?nocache=" + Date.now());
     const data = await res.json();
 
     const status = document.getElementById("status");
@@ -118,24 +117,16 @@ async function loadOnlinePlayers() {
 
     if (data.online === true) {
 
-  status.textContent = "متصل 🟢";
+      status.textContent = "متصل 🟢";
 
-  if (data.players && typeof data.players.online !== "undefined") {
-  count.textContent = data.players?.online + " / " + data.players?.max;
-} else {
-  count.textContent = "0 / 0";
-  }
+      count.textContent = data.players.online + " / " + data.players.max;
 
-      if (data.players && data.players.list && data.players.list.length > 0) {
+      if (data.players.list && data.players.list.length > 0) {
 
-  data.players.list.forEach(player => {
+        data.players.list.forEach(player => {
 
           const li = document.createElement("li");
-          li.style.display = "flex";
-          li.style.alignItems = "center";
-          li.style.marginBottom = "5px";
 
-          // صورة الوجه
           const img = document.createElement("img");
           img.src = "https://crafatar.com/avatars/" + player.uuid + "?size=32&overlay";
           img.width = 32;
@@ -143,7 +134,6 @@ async function loadOnlinePlayers() {
           img.style.marginLeft = "8px";
           img.style.borderRadius = "4px";
 
-          // اسم اللاعب
           const name = document.createElement("span");
           name.textContent = player.name;
 
@@ -153,27 +143,30 @@ async function loadOnlinePlayers() {
           list.appendChild(li);
 
         });
-  }
+
       } else {
         list.innerHTML = "<li>لا يوجد لاعبين متصلين</li>";
       }
 
     } else {
+
       status.textContent = "مغلق 🔴";
-count.textContent = "0 / 0";
-list.innerHTML = "<li>السيرفر مغلق</li>";
+      count.textContent = "0 / 0";
+      list.innerHTML = "<li>السيرفر مغلق</li>";
+
     }
-} catch {
-  document.getElementById("status").textContent = "مغلق 🔴";
-  document.getElementById("count").textContent = "0 / 0";
-  document.getElementById("online-players").innerHTML = "<li>السيرفر مغلق</li>";
-}
+
+  } catch {
+
+    document.getElementById("status").textContent = "خطأ في الاتصال";
+    document.getElementById("count").textContent = "0 / 0";
+
+  }
 }
 
 loadOnlinePlayers();
 setInterval(loadOnlinePlayers, 10000);
 </script>
-      
 </div>
 
     <h2>🔗 روابط السرفر</h2>
