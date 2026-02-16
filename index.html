@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     list.innerHTML = "";
 
-    if (data.online === true) {
+    if (data.version && data.version.name_clean !== "● Offline") {
 
       status.textContent = "متصل 🟢";
 
