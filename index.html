@@ -132,9 +132,9 @@ async function loadOnlinePlayers() {
     count.textContent = "0";
   }
 
-      if (data.players && data.players.list && data.players.list.length > 0)
+      if (data.players && data.players.list && data.players.list.length > 0) {
 
-        data.players.list.forEach(player => {
+  data.players.list.forEach(player => {
 
           const li = document.createElement("li");
           li.style.display = "flex";
@@ -159,7 +159,7 @@ async function loadOnlinePlayers() {
           list.appendChild(li);
 
         });
-
+  }
       } else {
         list.innerHTML = "<li>لا يوجد لاعبين متصلين</li>";
       }
