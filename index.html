@@ -112,10 +112,10 @@ async function loadOnlinePlayers() {
 
   status.textContent = "متصل 🟢";
 
-  if (data.players) {
-    count.textContent = data.players.online + " / " + data.players.max;
-  } else {
-    count.textContent = "0";
+  if (data.players && typeof data.players.online !== "undefined") {
+  count.textContent = data.players.online + " / " + data.players.max;
+} else {
+  count.textContent = "0 / 0";
   }
 
       if (data.players && data.players.list && data.players.list.length > 0) {
@@ -152,18 +152,18 @@ async function loadOnlinePlayers() {
 
     } else {
       status.textContent = "مغلق 🔴";
-      count.textContent = "0";
-      list.innerHTML = "<li>السيرفر مغلق</li>";
+count.textContent = "0 / 0";
+list.innerHTML = "<li>السيرفر مغلق</li>";
     }
 } catch {
   document.getElementById("status").textContent = "مغلق 🔴";
-  document.getElementById("count").textContent = "0";
+  document.getElementById("count").textContent = "0 / 0";
   document.getElementById("online-players").innerHTML = "<li>السيرفر مغلق</li>";
 }
 }
 
 loadOnlinePlayers();
-setInterval(loadOnlinePlayers, 5000);
+setInterval(loadOnlinePlayers, 10000);
 </script>
       
 </div>
