@@ -63,6 +63,10 @@
 
 #online-players-box {
   margin-top: 15px;
+  background: rgba(0,0,0,0.05);
+  padding: 12px;
+  border-radius: 10px;
+    }
     }
   </style>
 </head>
@@ -105,7 +109,7 @@
 <script defer>
 async function loadOnlinePlayers() {
   try {
-    const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303?nocache=" + Date.now());
+    const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me:28303?nocache=" + Date.now(), { cache: "no-store" });
     const data = await res.json();
 
     const status = document.getElementById("status");
