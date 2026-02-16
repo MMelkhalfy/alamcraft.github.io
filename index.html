@@ -107,7 +107,7 @@
 <script defer>
 async function loadOnlinePlayers() {
   try {
-    const res = await fetch("https://api.mcsrvstat.us/2/Alameldin.aternos.me?nocache=" + Date.now(), { cache: "no-store" });
+    const res = await fetch("https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?nocache=" + Date.now(), { cache: "no-store" });
     const data = await res.json();
 
     const status = document.getElementById("status");
@@ -116,12 +116,12 @@ async function loadOnlinePlayers() {
 
     list.innerHTML = "";
 
-    if (data.online) {
+    if (data.online === true) {
 
   status.textContent = "متصل 🟢";
 
   if (data.players && typeof data.players.online !== "undefined") {
-  count.textContent = data.players.online + " / " + data.players.max;
+  count.textContent = data.players?.online + " / " + data.players?.max;
 } else {
   count.textContent = "0 / 0";
   }
