@@ -132,10 +132,32 @@ document.addEventListener("DOMContentLoaded", function() {
       count.textContent = data.players.online + " / " + data.players.max;
 count.dir = "ltr";
 
-      if (data.players.list && data.players.list.length > 0) {
+      if (data.players && data.players.list && data.players.list.length > 0) {
 
-        data.players.list.forEach(player => {
+  data.players.list.forEach(player => {
 
+    const li = document.createElement("li");
+
+    const img = document.createElement("img");
+
+    // استخدم اسم اللاعب بدل UUID
+    img.src = "https://minotar.net/avatar/" + player.name + "/32";
+
+    img.width = 32;
+    img.height = 32;
+    img.style.marginLeft = "8px";
+    img.style.borderRadius = "4px";
+
+    const name = document.createElement("span");
+    name.textContent = player.name;
+
+    li.appendChild(img);
+    li.appendChild(name);
+
+    list.appendChild(li);
+
+  });
+}
           const li = document.createElement("li");
 
           const img = document.createElement("img");
