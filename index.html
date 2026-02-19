@@ -139,7 +139,16 @@ async function loadOnlinePlayers() {
           const img = document.createElement("img");
 img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
 img.width = 32;
+const img = document.createElement("img");
+img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
+img.width = 32;
+img.height = 32;
+img.style.marginLeft = "8px";
+img.style.borderRadius = "4px";
+img.style.verticalAlign = "middle";
 
+const name = document.createElement("span");
+name.textContent = " " + player.name;
           const name = document.createElement("span");
           name.textContent = player.name;
 
@@ -153,6 +162,23 @@ img.width = 32;
       } else {
 
         list.innerHTML = "<li>لا يوجد لاعبين متصلين</li>";
+        // اختبار مؤقت
+const testLi = document.createElement("li");
+
+const testImg = document.createElement("img");
+testImg.src = "https://cravatar.eu/avatar/Notch/32.png";
+testImg.width = 32;
+testImg.height = 32;
+testImg.style.marginLeft = "8px";
+testImg.style.borderRadius = "4px";
+
+const testName = document.createElement("span");
+testName.textContent = " Notch (اختبار)";
+
+testLi.appendChild(testImg);
+testLi.appendChild(testName);
+
+list.appendChild(testLi);
 
       }
 
