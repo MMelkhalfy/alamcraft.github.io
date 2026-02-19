@@ -138,23 +138,6 @@ async function loadOnlinePlayers() {
 
     const li = document.createElement("li");
 
-    const img = document.createElement("img");
-    img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
-    img.width = 32;
-    img.height = 32;
-
-    const name = document.createElement("span");
-    name.textContent = " " + player.name;
-
-    li.appendChild(img);
-    li.appendChild(name);
-
-    list.appendChild(li);
-
-  });
-
-}
-
       } else {
 
         list.innerHTML = "<li>لا يوجد لاعبين متصلين</li>";
@@ -198,8 +181,8 @@ list.appendChild(testLi);
 // تشغيل عند فتح الصفحة
 loadOnlinePlayers();
 
-// تحديث كل 10 ثواني
-setInterval(loadOnlinePlayers, 10000);
+// تحديث كل 5 ثواني
+setInterval(loadOnlinePlayers, 5000);
 
 </script>
     </div>
