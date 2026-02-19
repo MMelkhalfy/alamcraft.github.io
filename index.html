@@ -132,49 +132,28 @@ async function loadOnlinePlayers() {
 
       if (data.players.list && data.players.list.length > 0) {
 
-        data.players.list.forEach(player => {
+        if (data.players.list && data.players.list.length > 0) {
 
-  const li = document.createElement("li");
+  data.players.list.forEach(player => {
 
-  const img = document.createElement("img");
-  img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
-  img.width = 32;
-  img.height = 32;
-  img.style.marginLeft = "8px";
-  img.style.borderRadius = "4px";
-  img.style.verticalAlign = "middle";
+    const li = document.createElement("li");
 
-  const name = document.createElement("span");
-  name.textContent = " " + player.name;
+    const img = document.createElement("img");
+    img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
+    img.width = 32;
+    img.height = 32;
 
-  li.appendChild(img);
-  li.appendChild(name);
+    const name = document.createElement("span");
+    name.textContent = " " + player.name;
 
-  list.appendChild(li);
+    li.appendChild(img);
+    li.appendChild(name);
 
-});
-          const img = document.createElement("img");
-img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
-img.width = 32;
-const img = document.createElement("img");
-img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
-img.width = 32;
-img.height = 32;
-img.style.marginLeft = "8px";
-img.style.borderRadius = "4px";
-img.style.verticalAlign = "middle";
+    list.appendChild(li);
 
-const name = document.createElement("span");
-name.textContent = " " + player.name;
-          const name = document.createElement("span");
-          name.textContent = player.name;
+  });
 
-          li.appendChild(img);
-          li.appendChild(name);
-
-          list.appendChild(li);
-
-        });
+}
 
       } else {
 
