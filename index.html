@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
   setInterval(loadOnlinePlayers, 10000);
 });
   try {
-    const res = await fetch("https://api.mcstatus.io/v2/status/java/alameldin.aternos.me?nocache=" + Date.now());
+    const res = await fetch("https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?query=true&nocache=" + Date.now());
     const data = await res.json();
 
     const status = document.getElementById("status");
