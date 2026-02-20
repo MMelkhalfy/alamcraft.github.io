@@ -85,7 +85,7 @@
 
     <div class="rules">
       <h2>📜 القوانين</h2>
-      <p>1️⃣ ممنوع السب أو الإهانة بجميع أشكالها 🤬<br>
+<p>1️⃣ ممنوع السب أو الإهانة بجميع أشكالها 🤬<br>
 2️⃣ ممنوع أي محتوى +18 بجميع أنواعه 🔞<br>
 3️⃣ ممنوع التنمّر أو التقليل من الآخرين 🐅<br>
 4️⃣ ممنوع الخناقات أو إثارة المشاكل 🤼‍♂️<br>
@@ -103,103 +103,7 @@
 إنذار🟩 ⬅️ إنذار🟨 ⬅️ طرد🟥<br></p>
       <h3>👑 المشرفين:</h3>
       <p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
-<div id="online-players-box">
-  <p>⚠️ حالة السيرفر: <span id="status">جارٍ التحقق...</span></p>
-  <p>👥 عدد اللاعبين: <span id="count">0</span></p>
-  <p>📋 اللاعبين المتصلين:</p>
-  <ul id="online-players" style="list-style:none;padding:0;"></ul>
-</div>
-<script>
-async function loadOnlinePlayers() {
-
-  const status = document.getElementById("status");
-  const count = document.getElementById("count");
-  const list = document.getElementById("online-players");
-
-  try {
-
-    const res = await fetch(
-      "https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?query=true&nocache=" + Date.now()
-    );
-
-    const data = await res.json();
-
-    list.innerHTML = "";
-
-    // الحالة الصحيحة لسيرفر Aternos
-    if (data.online === true && data.players && data.players.max > 0) {
-
-      status.textContent = "متصل 🟢";
-
-    } else {
-
-      status.textContent = "مغلق 🔴";
-
-    }
-
-    // عدد اللاعبين
-    if (data.players) {
-      count.textContent = data.players.online + " / " + data.players.max;
-    } else {
-      count.textContent = "0 / 2026";
-    }
-
-    // قائمة اللاعبين
-    if (data.players && data.players.list && data.players.list.length > 0) {
-
-      data.players.list.forEach(player => {
-
-        const li = document.createElement("li");
-
-        const img = document.createElement("img");
-
-        if (player.uuid) {
-          img.src = "https://crafatar.com/avatars/" + player.uuid + "?size=32&overlay";
-        } else {
-          img.src = "https://crafatar.com/avatars/8667ba71b85a4004af54457a9734eed7?size=32";
-        }
-
-        img.width = 32;
-        img.height = 32;
-        img.style.marginLeft = "8px";
-        img.style.borderRadius = "4px";
-
-        const name = document.createElement("span");
-        name.textContent = " " + player.name;
-
-        li.appendChild(img);
-        li.appendChild(name);
-
-        list.appendChild(li);
-
-      });
-
-    } else {
-
-      const li = document.createElement("li");
-      li.textContent = "لا يوجد لاعبين متصلين";
-      list.appendChild(li);
-
-    }
-
-  } catch {
-
-    status.textContent = "خطأ في الاتصال ❌";
-    count.textContent = "0 / 2026";
-
-  }
-
-}
-
-// تشغيل أول مرة فور فتح الصفحة
-loadOnlinePlayers();
-
-// تحديث كل 5 ثواني
-setInterval(loadOnlinePlayers, 5000);
-
-</script>
     </div>
-
     <h2>🔗 روابط السرفر</h2>
     <p>🛏️ <a href="https://add.aternos.org/Alameldin">إضافة السرفر في Minecraft Bedrock</a></p>
     <p>🟩 <a href="https://chat.whatsapp.com/CbS8wvqbwci5gsddPTRQbC?mode=gi_t">مجموعة الواتساب</a></p>
