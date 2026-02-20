@@ -119,34 +119,34 @@ async function loadOnlinePlayers() {
   try {
 
     const res = await fetch(
-      "https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?query=true&nocache=" + Date.now()
+      "https://api.mcstatus.io/v2/status/java/alameldin.aternos.me?query=true&nocache=" + Date.now()
     );
 
     const data = await res.json();
 
     list.innerHTML = "";
 
-    // الحالات
-    if (data.online === true) {
+    const data = await res.json();
 
-      status.textContent = "متصل 🟢";
+list.innerHTML = "";
 
-    } else if (data.online === false) {
+// الحالة الصحيحة لسيرفر Aternos
+if (data.online === true && data.players && data.players.max > 0) {
 
-      status.textContent = "مغلق 🔴";
+  status.textContent = "متصل 🟢";
 
-    } else {
+} else {
 
-      status.textContent = "جارٍ التحقق 🟡";
+  status.textContent = "مغلق 🔴";
 
-    }
+}
 
-    // عدد اللاعبين
-    if (data.players) {
-      count.textContent = data.players.online + " / " + data.players.max;
-    } else {
-      count.textContent = "0 / 2026";
-    }
+// عدد اللاعبين
+if (data.players) {
+  count.textContent = data.players.online + " / " + data.players.max;
+} else {
+  count.textContent = "0 / 2026";
+}
 
     // قائمة اللاعبين
     if (data.players && data.players.list && data.players.list.length > 0) {
@@ -193,7 +193,7 @@ async function loadOnlinePlayers() {
 loadOnlinePlayers();
 
 // تحديث كل 5 ثواني
-setInterval(loadOnlinePlayers, 2000);
+setInterval(loadOnlinePlayers, 5000);
 
 </script>
     </div>
