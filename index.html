@@ -119,34 +119,30 @@ async function loadOnlinePlayers() {
   try {
 
     const res = await fetch(
-      "https://api.mcstatus.io/v2/status/java/alameldin.aternos.me?query=true&nocache=" + Date.now()
+      "https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?query=true&nocache=" + Date.now()
     );
 
     const data = await res.json();
 
     list.innerHTML = "";
 
-    const data = await res.json();
+    // الحالة الصحيحة لسيرفر Aternos
+    if (data.online === true && data.players && data.players.max > 0) {
 
-list.innerHTML = "";
+      status.textContent = "متصل 🟢";
 
-// الحالة الصحيحة لسيرفر Aternos
-if (data.online === true && data.players && data.players.max > 0) {
+    } else {
 
-  status.textContent = "متصل 🟢";
+      status.textContent = "مغلق 🔴";
 
-} else {
+    }
 
-  status.textContent = "مغلق 🔴";
-
-}
-
-// عدد اللاعبين
-if (data.players) {
-  count.textContent = data.players.online + " / " + data.players.max;
-} else {
-  count.textContent = "0 / 2026";
-}
+    // عدد اللاعبين
+    if (data.players) {
+      count.textContent = data.players.online + " / " + data.players.max;
+    } else {
+      count.textContent = "0 / 2026";
+    }
 
     // قائمة اللاعبين
     if (data.players && data.players.list && data.players.list.length > 0) {
@@ -156,7 +152,13 @@ if (data.players) {
         const li = document.createElement("li");
 
         const img = document.createElement("img");
-        img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
+
+        if (player.uuid) {
+          img.src = "https://crafatar.com/avatars/" + player.uuid + "?size=32&overlay";
+        } else {
+          img.src = "https://crafatar.com/avatars/8667ba71b85a4004af54457a9734eed7?size=32";
+        }
+
         img.width = 32;
         img.height = 32;
         img.style.marginLeft = "8px";
