@@ -188,6 +188,11 @@ async function loadOnlinePlayers() {
   }
 
 }
+  // تشغيل أول مرة
+loadOnlinePlayers();
+
+// تحديث كل 5 ثواني
+setInterval(loadOnlinePlayers, 5000);
 </script>
     </div>
 
