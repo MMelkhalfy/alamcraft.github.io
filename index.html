@@ -104,7 +104,7 @@
       <h3>👑 المشرفين:</h3>
       <p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
 <div id="online-players-box">
-  <p>🟢 حالة السيرفر: <span id="status">جارٍ التحقق...</span></p>
+  <p>⚠️ حالة السيرفر: <span id="status">جارٍ التحقق...</span></p>
   <p>👥 عدد اللاعبين: <span id="count">0</span></p>
   <p>📋 اللاعبين المتصلين:</p>
   <ul id="online-players" style="list-style:none;padding:0;"></ul>
@@ -118,46 +118,64 @@ async function loadOnlinePlayers() {
 
   try {
 
-    const res = await fetch("https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?query=true&nocache=" + Date.now());
+    const res = await fetch(
+      "https://api.mcstatus.io/v2/status/java/alameldin.aternos.me:28303?query=true&nocache=" + Date.now()
+    );
 
     const data = await res.json();
 
     list.innerHTML = "";
 
-    if (data.online) {
+    if (data.online === true) {
 
       status.textContent = "متصل 🟢";
-
       count.textContent = data.players.online + " / " + data.players.max;
 
       if (data.players.list && data.players.list.length > 0) {
 
-        if (data.players.list && data.players.list.length > 0) {
+        data.players.list.forEach(player => {
 
-  data.players.list.forEach(player => {
+          const li = document.createElement("li");
 
-    const li = document.createElement("li");
+          const img = document.createElement("img");
+          img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
+          img.width = 32;
+          img.height = 32;
+          img.style.marginLeft = "8px";
+          img.style.borderRadius = "4px";
+          img.style.verticalAlign = "middle";
+
+          const name = document.createElement("span");
+          name.textContent = " " + player.name;
+
+          li.appendChild(img);
+          li.appendChild(name);
+
+          list.appendChild(li);
+
+        });
 
       } else {
 
         list.innerHTML = "<li>لا يوجد لاعبين متصلين</li>";
-        // اختبار مؤقت
-const testLi = document.createElement("li");
 
-const testImg = document.createElement("img");
-testImg.src = "https://cravatar.eu/avatar/Notch/32.png";
-testImg.width = 32;
-testImg.height = 32;
-testImg.style.marginLeft = "8px";
-testImg.style.borderRadius = "4px";
+        // لاعب اختبار مؤقت
+        const testLi = document.createElement("li");
 
-const testName = document.createElement("span");
-testName.textContent = " Notch (اختبار)";
+        const testImg = document.createElement("img");
+        testImg.src = "https://cravatar.eu/avatar/Notch/32.png";
+        testImg.width = 32;
+        testImg.height = 32;
+        testImg.style.marginLeft = "8px";
+        testImg.style.borderRadius = "4px";
 
-testLi.appendChild(testImg);
-testLi.appendChild(testName);
+        const testName = document.createElement("span");
+        testName.textContent = " Notch (اختبار)";
 
-list.appendChild(testLi);
+        testLi.appendChild(testImg);
+        testLi.appendChild(testName);
+
+        list.appendChild(testLi);
 
       }
 
@@ -169,10 +187,10 @@ list.appendChild(testLi);
 
     }
 
-  } catch {
+  } catch (e) {
 
-    status.textContent = "خطأ في الاتصال";
-    count.textContent = "0 / 0";
+    status.textContent = "خطأ في الاتصال ❌";
+    count.textContent = "0 / 2026";
 
   }
 
@@ -183,7 +201,6 @@ loadOnlinePlayers();
 
 // تحديث كل 5 ثواني
 setInterval(loadOnlinePlayers, 5000);
-
 </script>
     </div>
 
