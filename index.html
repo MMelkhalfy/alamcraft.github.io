@@ -126,68 +126,61 @@ async function loadOnlinePlayers() {
 
     list.innerHTML = "";
 
+    // الحالات
     if (data.online === true) {
 
       status.textContent = "متصل 🟢";
-      count.textContent = data.players.online + " / " + data.players.max;
 
-      if (data.players.list && data.players.list.length > 0) {
+    } else if (data.online === false) {
 
-        data.players.list.forEach(player => {
-
-          const li = document.createElement("li");
-
-          const img = document.createElement("img");
-          img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
-          img.width = 32;
-          img.height = 32;
-          img.style.marginLeft = "8px";
-          img.style.borderRadius = "4px";
-          img.style.verticalAlign = "middle";
-
-          const name = document.createElement("span");
-          name.textContent = " " + player.name;
-
-          li.appendChild(img);
-          li.appendChild(name);
-
-          list.appendChild(li);
-
-        });
-
-      } else {
-
-        list.innerHTML = "<li>لا يوجد لاعبين متصلين</li>";
-
-        // لاعب اختبار مؤقت
-        const testLi = document.createElement("li");
-
-        const testImg = document.createElement("img");
-        testImg.src = "https://cravatar.eu/avatar/Notch/32.png";
-        testImg.width = 32;
-        testImg.height = 32;
-        testImg.style.marginLeft = "8px";
-        testImg.style.borderRadius = "4px";
-
-        const testName = document.createElement("span");
-        testName.textContent = " Notch (اختبار)";
-
-        testLi.appendChild(testImg);
-        testLi.appendChild(testName);
-
-        list.appendChild(testLi);
-
-      }
+      status.textContent = "مغلق 🔴";
 
     } else {
 
-      status.textContent = "مغلق 🔴";
-      count.textContent = "0 / 2026";
-      list.innerHTML = "<li>السيرفر مغلق</li>";
+      status.textContent = "جارٍ التحقق 🟡";
 
     }
 
-  } catch (e) {
+    // عدد اللاعبين
+    if (data.players) {
+      count.textContent = data.players.online + " / " + data.players.max;
+    } else {
+      count.textContent = "0 / 2026";
+    }
+
+    // قائمة اللاعبين
+    if (data.players && data.players.list && data.players.list.length > 0) {
+
+      data.players.list.forEach(player => {
+
+        const li = document.createElement("li");
+
+        const img = document.createElement("img");
+        img.src = "https://cravatar.eu/avatar/" + player.name + "/32.png";
+        img.width = 32;
+        img.height = 32;
+        img.style.marginLeft = "8px";
+        img.style.borderRadius = "4px";
+
+        const name = document.createElement("span");
+        name.textContent = " " + player.name;
+
+        li.appendChild(img);
+        li.appendChild(name);
+
+        list.appendChild(li);
+
+      });
+
+    } else {
+
+      const li = document.createElement("li");
+      li.textContent = "لا يوجد لاعبين متصلين";
+      list.appendChild(li);
+
+    }
+
+  } catch {
 
     status.textContent = "خطأ في الاتصال ❌";
     count.textContent = "0 / 2026";
@@ -195,12 +188,6 @@ async function loadOnlinePlayers() {
   }
 
 }
-
-// تشغيل عند فتح الصفحة
-loadOnlinePlayers();
-
-// تحديث كل 5 ثواني
-setInterval(loadOnlinePlayers, 5000);
 </script>
     </div>
 
