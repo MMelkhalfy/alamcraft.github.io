@@ -101,6 +101,11 @@ font-weight:bold
 }
 
 .rules{
+.dark-mode .rules{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.15);
+}
+
 text-align:right;
 direction:rtl;
 background:rgba(0,0,0,.05);
@@ -119,7 +124,11 @@ a:focus{
 outline:2px solid #4CAF50;
 outline-offset:2px;
  }
-
+ 
+.dark-mode a{
+color:#66ff99;
+ }
+ 
 .dark-mode .rules{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.1);
@@ -193,6 +202,11 @@ body.classList.toggle('dark-mode');
 if(body.classList.contains('dark-mode')){localStorage.setItem('mode','dark')}
 else{localStorage.setItem('mode','light')}
 });
+button:focus,
+a:focus{
+outline:2px solid #4CAF50;
+outline-offset:2px;
+ }
 </script>
 </body>
 </html>
