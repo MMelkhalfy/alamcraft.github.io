@@ -18,130 +18,62 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#4CAF50">
 <meta name="robots" content="index, follow">
-  <style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    color: #222;
-    text-align: center;
-    transition: background 0.4s, color 0.4s;
-  }
-
-  .dark-mode {
-    background-color: #1e1e1e;
-    color: #eee;
-  }
-
-  .container {
-    width: 90%;
-    margin: auto;
-    max-width: 700px;
-  }
-
-  h1 {
-    color: #4CAF50;
-  }
-
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 10px;
-    font-size: 16px;
-    transition: background 0.3s;
-  }
-
-  button:hover {
-    background-color: #45a049;
-  }
-
-  a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .rules {
-    text-align: right;
-    direction: rtl;
-    background: rgba(0,0,0,0.05);
-    padding: 15px;
-    border-radius: 12px;
-    margin-top: 15px;
-  }
-
+<style>
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:#f4f4f4;color:#222;text-align:center;transition:background .4s,color .4s}
+.dark-mode{background-color:#1e1e1e;color:#eee}
+.container{width:90%;margin:auto;max-width:700px}
+h1{color:#4CAF50}
+button{background-color:#4CAF50;color:white;border:none;padding:10px 15px;border-radius:8px;cursor:pointer;margin:10px;font-size:16px;transition:background .3s,transform .1s}
+button:hover{background-color:#45a049}
+button:active{transform:scale(.95)}
+a{color:#4CAF50;text-decoration:none;font-weight:bold}
+.rules{text-align:right;direction:rtl;background:rgba(0,0,0,.05);padding:15px;border-radius:12px;margin-top:15px}
+#toast{position:fixed;top:20px;right:20px;background:#4CAF50;color:white;padding:10px 16px;border-radius:8px;opacity:0;transition:opacity .3s;font-size:14px}
+#toast.show{opacity:1}
 </style>
 </head>
 <body>
-  <div class="container">
-    <h1>مرحب بكم في سيرفر علم كرافت ☘️</h1>
-    <p>ℹ️🅿️: Alameldin.aternos.me:28303</p>
-    <button onclick="copyIP(this)">📋 نسخ IP السيرفر</button>
-    <p>☕️ إصدار الجافا: 1.7 - 1.21.11</p>
-    <p>🛏️ إصدار البيدروك:1.21.111 - 26.0</p>
-
-    <button onclick="window.location.href='https://add.aternos.org/Alameldin'">إضافة السرفر في Minecraft Bedrock</button>
-
-    <div class="rules">
+<div id="toast">✔ تم نسخ IP السيرفر</div>
+<div class="container">
+<img src="https://alamcraft.github.io/images/OIG1.png" width="100">
+<h1>مرحب بكم في سيرفر علم كرافت ☘️</h1>
+<p>ℹ️🅿️: Alameldin.aternos.me:28303</p>
+<button onclick="copyIP()">📋 نسخ IP السيرفر</button>
+<p>☕️ إصدار الجافا: 1.7 - 1.21.11</p>
+<p>🛏️ إصدار البيدروك: 1.21.111 - 26.0</p>
+<button onclick="window.location.href='https://add.aternos.org/Alameldin'">إضافة السرفر في Minecraft Bedrock</button>
+<div class="rules">
 <h2>📜 القوانين</h2>
-<p>1️⃣ ممنوع السب أو الإهانة بجميع أشكالها 🤬<br>
-2️⃣ ممنوع أي محتوى +18 بجميع أنواعه 🔞<br>
-3️⃣ ممنوع التنمّر أو التقليل من الآخرين 🐅<br>
-4️⃣ ممنوع الخناقات أو إثارة المشاكل 🤼‍♂️<br>
-5️⃣ ممنوع السبام أو الإزعاج المتكرر 📢<br>
-6️⃣ ممنوع الكذب أو نشر معلومات مضللة 😵<br>
-7️⃣ ممنوع التسلّط أو استغلال الصلاحيات 👀<br>
-8️⃣ ممنوع طلب أدمن أو صلاحيات 🦸‍♂️<br>
-9️⃣ ممنوع الترويج لسيرفرات أو روابط خارجية بدون إذن الإدارة 📢<br>
-🔟 ممنوع الكلام في السياسة أو المواضيع الحساسة 👨‍⚖️<br>
-1️⃣1️⃣ ممنوع الإزعاج بالمكالمات المتكررة 📵<br>
-1️⃣2️⃣ الالتزام باحترام الإدارة والأعضاء 🤝<br>
-1️⃣3️⃣ قوانين الأدمن هي نفس قوانين الأعضاء 👑<br>
-1️⃣4️⃣ للإدارة الحق في اتخاذ القرار المناسب في الحالات غير المذكورة ⚖️<br>
-1️⃣5️⃣ نظام العقوبات:<br>
-إنذار🟩 ⬅️ إنذار🟨 ⬅️ طرد🟥<br></p>
-      <h3>👑 المشرفين:</h3>
-      <p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
-    </div>
-    <h2>🔗 روابط السرفر</h2>
-    <p>🛏️ <a href="https://add.aternos.org/Alameldin">إضافة السرفر في Minecraft Bedrock</a></p>
-    <p>🟩 <a href="https://chat.whatsapp.com/CbS8wvqbwci5gsddPTRQbC?mode=gi_t">مجموعة الواتساب</a></p>
-    <p>💠 <a href="https://t.me/Alam_Craft">مجموعة التليجرام</a></p>
-    <p>🟣 <a href="https://m.me/j/AbYYA9YcBq-JUEdz">مجموعة الماسينجر</a></p>
-    <p>🐷 <a href="https://discord.gg/BKys3Eu8t8">سيرفر الديسكورد</a></p>
-    
-    <button id="modeBtn">🌙 تبديل المظهر</button>
-  </div>
-  <script>
-  function copyIP(btn) {
-  navigator.clipboard.writeText("Alameldin.aternos.me:28303");
-  const original = btn.innerHTML;
-
-  btn.innerHTML = "✔ تم النسخ";
-
-  setTimeout(()=>{
-    btn.innerHTML = original;
-  },2000);
+<p>1️⃣ ممنوع السب أو الإهانة بجميع أشكالها 🤬<br>2️⃣ ممنوع أي محتوى +18 بجميع أنواعه 🔞<br>3️⃣ ممنوع التنمّر أو التقليل من الآخرين 🐅<br>4️⃣ ممنوع الخناقات أو إثارة المشاكل 🤼‍♂️<br>5️⃣ ممنوع السبام أو الإزعاج المتكرر 📢<br>6️⃣ ممنوع الكذب أو نشر معلومات مضللة 😵<br>7️⃣ ممنوع التسلّط أو استغلال الصلاحيات 👀<br>8️⃣ ممنوع طلب أدمن أو صلاحيات 🦸‍♂️<br>9️⃣ ممنوع الترويج لسيرفرات أو روابط خارجية بدون إذن الإدارة 📢<br>🔟 ممنوع الكلام في السياسة أو المواضيع الحساسة 👨‍⚖️<br>1️⃣1️⃣ ممنوع الإزعاج بالمكالمات المتكررة 📵<br>1️⃣2️⃣ الالتزام باحترام الإدارة والأعضاء 🤝<br>1️⃣3️⃣ قوانين الأدمن هي نفس قوانين الأعضاء 👑<br>1️⃣4️⃣ للإدارة الحق في اتخاذ القرار المناسب في الحالات غير المذكورة ⚖️<br>1️⃣5️⃣ نظام العقوبات:<br>إنذار🟩 ⬅️ إنذار🟨 ⬅️ طرد🟥</p>
+<h3>👑 المشرفين:</h3>
+<p>علم جيمر ☘️، سراج 🦊، سنو 👑❄️</p>
+</div>
+<h2>🔗 روابط السرفر</h2>
+<p>🛏️ <a href="https://add.aternos.org/Alameldin">إضافة السرفر في Minecraft Bedrock</a></p>
+<p>🟩 <a href="https://chat.whatsapp.com/CbS8wvqbwci5gsddPTRQbC">مجموعة الواتساب</a></p>
+<p>💠 <a href="https://t.me/Alam_Craft">مجموعة التليجرام</a></p>
+<p>🟣 <a href="https://m.me/j/AbYYA9YcBq-JUEdz">مجموعة الماسينجر</a></p>
+<p>🐷 <a href="https://discord.gg/BKys3Eu8t8">سيرفر الديسكورد</a></p>
+<button id="modeBtn">🌙 تبديل المظهر</button>
+<p style="opacity:.6;font-size:14px;margin-top:30px">© 2026 AlamCraft Server</p>
+</div>
+<script>
+function copyIP(){
+navigator.clipboard.writeText("Alameldin.aternos.me:28303");
+const toast=document.getElementById("toast");
+toast.classList.add("show");
+setTimeout(()=>{toast.classList.remove("show")},2000)
 }
-    const modeBtn = document.getElementById('modeBtn');
-const body = document.body;
-const savedMode = localStorage.getItem('mode');
-if (savedMode === 'dark') {
-  body.classList.add('dark-mode');
-    }
-if (modeBtn) {
-  modeBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-      localStorage.setItem('mode', 'dark');
-    } else {
-      localStorage.setItem('mode', 'light');
-    }
-  });
-}
+const modeBtn=document.getElementById('modeBtn');
+const body=document.body;
+const savedMode=localStorage.getItem('mode');
+if(savedMode==='dark'){body.classList.add('dark-mode')}
+if(!savedMode){if(window.matchMedia('(prefers-color-scheme: dark)').matches){body.classList.add('dark-mode')}}
+modeBtn.addEventListener('click',()=>{
+body.classList.toggle('dark-mode');
+if(body.classList.contains('dark-mode')){localStorage.setItem('mode','dark')}
+else{localStorage.setItem('mode','light')}
+});
 </script>
 </body>
 </html>
