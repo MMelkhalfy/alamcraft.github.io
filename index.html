@@ -39,28 +39,19 @@
 <meta property="og:locale" content="ar_AR">
 <meta property="og:site_name" content="علم كرافت">
 <style>
+<style>
 body{
 font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 background-color:#f4f4f4;
 color:#222;
 text-align:center;
-transition:background .4s,color .4s
+margin:0;
+transition:background .3s,color .3s
 }
 
 .dark-mode{
 background-color:#121212;
-color:#ffffff
-}
-
-.dark-mode h1{
-color:#4CAF50;
-}
-
-.dark-mode p,
-.dark-mode a,
-.dark-mode h2,
-.dark-mode h3{
-color:#ffffff;
+color:#fff
 }
 
 .container{
@@ -72,6 +63,7 @@ max-width:700px
 h1{
 color:#4CAF50
 }
+
 button{
 background-color:#4CAF50;
 color:white;
@@ -81,17 +73,12 @@ border-radius:8px;
 cursor:pointer;
 margin:10px;
 font-size:16px;
-transition:background .3s,transform .2s,box-shadow .2s
-  }
-  
-button:hover{
-background-color:#45a049;
-transform:translateY(-2px);
-box-shadow:0 4px 10px rgba(0,0,0,.2)
+transition:.2s
 }
 
-button:active{
-transform:scale(.95)
+button:hover{
+background-color:#45a049;
+transform:translateY(-2px)
 }
 
 a{
@@ -100,12 +87,11 @@ text-decoration:none;
 font-weight:bold
 }
 
-.rules{
-.dark-mode .rules{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.15);
+.dark-mode a{
+color:#66ff99
 }
 
+.rules{
 text-align:right;
 direction:rtl;
 background:rgba(0,0,0,.05);
@@ -116,23 +102,14 @@ margin-top:15px
 
 .dark-mode .rules{
 background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.15);
+border:1px solid rgba(255,255,255,.1)
 }
 
 button:focus,
 a:focus{
 outline:2px solid #4CAF50;
-outline-offset:2px;
- }
- 
-.dark-mode a{
-color:#66ff99;
- }
- 
-.dark-mode .rules{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
- }
+outline-offset:2px
+}
 
 #toast{
 position:fixed;
@@ -143,7 +120,7 @@ color:white;
 padding:10px 16px;
 border-radius:8px;
 opacity:0;
-transition:opacity .3s;
+transition:.3s;
 font-size:14px
 }
 
@@ -202,11 +179,6 @@ body.classList.toggle('dark-mode');
 if(body.classList.contains('dark-mode')){localStorage.setItem('mode','dark')}
 else{localStorage.setItem('mode','light')}
 });
-button:focus,
-a:focus{
-outline:2px solid #4CAF50;
-outline-offset:2px;
- }
 </script>
 </body>
 </html>
