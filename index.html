@@ -27,10 +27,29 @@
 <meta property="og:locale" content="ar_AR">
 <meta property="og:site_name" content="علم كرافت">
 <style>
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:#f4f4f4;color:#222;text-align:center;transition:background .4s,color .4s}
-.dark-mode{background-color:#1e1e1e;color:#eee}
-.container{width:90%;margin:auto;max-width:700px}
-h1{color:#4CAF50}
+body{
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+background-color:#f4f4f4;
+color:#222;
+text-align:center;
+transition:background .4s,color .4s
+}
+
+.dark-mode{
+background-color:#1e1e1e;
+color:#eee
+}
+
+.container{
+width:90%;
+margin:auto;
+max-width:700px
+}
+
+h1{
+color:#4CAF50
+}
+
 button{
 background-color:#4CAF50;
 color:white;
@@ -51,33 +70,39 @@ box-shadow:0 4px 10px rgba(0,0,0,.2)
 
 button:active{
 transform:scale(.95)
-  }button:hover{
-background-color:#45a049;
-transform:translateY(-2px);
-box-shadow:0 4px 10px rgba(0,0,0,.2)
 }
 
-button:active{
-transform:scale(.95)
+a{
+color:#4CAF50;
+text-decoration:none;
+font-weight:bold
 }
-  transform:scale(.95);
-    }
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 10px;
-  font-size: 16px;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+
+.rules{
+text-align:right;
+direction:rtl;
+background:rgba(0,0,0,.05);
+padding:15px;
+border-radius:12px;
+margin-top:15px
 }
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }button:active{transform:scale(.95)}
-a{color:#4CAF50;text-decoration:none;font-weight:bold}
-.rules{text-align:right;direction:rtl;background:rgba(0,0,0,.05);padding:15px;border-radius:12px;margin-top:15px}
-#toast{position:fixed;top:20px;right:20px;background:#4CAF50;color:white;padding:10px 16px;border-radius:8px;opacity:0;transition:opacity .3s;font-size:14px}
-#toast.show{opacity:1}
+
+#toast{
+position:fixed;
+top:20px;
+right:20px;
+background:#4CAF50;
+color:white;
+padding:10px 16px;
+border-radius:8px;
+opacity:0;
+transition:opacity .3s;
+font-size:14px
+}
+
+#toast.show{
+opacity:1
+}
 </style>
 </head>
 <body>
