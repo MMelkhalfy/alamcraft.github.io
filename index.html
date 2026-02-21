@@ -79,7 +79,7 @@
   <div class="container">
     <h1>مرحب بكم في سيرفر علم كرافت ☘️</h1>
     <p>ℹ️🅿️: Alameldin.aternos.me:28303</p>
-    <button onclick="copyIP()">📋 نسخ IP السيرفر</button>
+    <button onclick="copyIP(this)">📋 نسخ IP السيرفر</button>
     <p>☕️ إصدار الجافا: 1.7 - 1.21.11</p>
     <p>🛏️ إصدار البيدروك:1.21.111 - 26.0</p>
 
@@ -116,10 +116,8 @@
     <button id="modeBtn">🌙 تبديل المظهر</button>
   </div>
   <script>
-  function copyIP() {
+  function copyIP(btn) {
   navigator.clipboard.writeText("Alameldin.aternos.me:28303");
-
-  const btn = event.target;
   const original = btn.innerHTML;
 
   btn.innerHTML = "✔ تم النسخ";
