@@ -192,20 +192,14 @@ pointer-events:none;
  }
 
 .link-item{
+.link-item{
 display:flex;
 align-items:center;
-justify-content:flex-start;
+justify-content:center;   /* يرجعهم في النص */
 gap:6px;
-width:fit-content;
-h2{
-margin:8px 0 4px;
- }
+margin:3px 0;            /* مسافة صغيرة جدًا */
 padding:0;
- }
-
- .link-item + .link-item{
-margin-top:2px;
- }
+}
 
  .link-item a{
 text-decoration:none;
@@ -224,6 +218,10 @@ margin:15px 0 8px;
 
 ul{
 margin:5px 0;
+ }
+
+.container{
+line-height:1.4;
  }
 </style>
 </head>
