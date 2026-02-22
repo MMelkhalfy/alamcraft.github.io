@@ -193,10 +193,12 @@ pointer-events:none;
 
 .link-item{
 display:flex;
+flex-direction:row;   /* يخلي الأيقونة والنص جنب بعض */
 align-items:center;
 justify-content:center;
 gap:6px;
-margin:8px 0;
+margin:6px 0;
+width:100%;           /* يمنع إن عنصرين يقفوا جنب بعض */
  }
 
  .link-item a{
@@ -207,6 +209,14 @@ text-decoration:none;
 width:20px;
 height:20px;
 object-fit:contain;
+ }
+
+ h2{
+margin:15px 0 8px;
+}
+
+ul{
+margin:5px 0;
  }
 </style>
 </head>
