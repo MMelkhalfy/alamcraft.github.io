@@ -191,26 +191,27 @@ user-select:none;
 pointer-events:none;
  }
 
-.link-item{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:6px;
-margin:2px auto;
-width:100%;
- }
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* المسافة بين الأيقونة والنص */
+  margin: 8px auto; /* المسافة العمودية بين كل رابط والذي يليه */
+  width: fit-content; /* يمنع التمدد بعرض الشاشة ويجمع الأيقونة والنص معاً */
+}
 
- .link-item a{
-text-decoration:none;
- }
+.link-item a {
+  text-decoration: none;
+  font-size: 16px; /* توحيد حجم الخط لتناسق أفضل */
+}
 
 .link-icon {
-  width: 28px;
-  height: 28px;
+  width: 20px; /* تصغير الأيقونة لتصبح بحجم الإيموجي تقريباً */
+  height: 20px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
- }
+}
 
  h2{
 margin:15px 0 8px;
