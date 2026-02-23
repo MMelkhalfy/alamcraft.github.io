@@ -191,26 +191,29 @@ user-select:none;
 pointer-events:none;
  }
 
+/* تنسيق العناصر التي تحتوي على الروابط */
 .link-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; 
-  margin: 2px auto; /* 💡 تم تقليل هذه القيمة هنا لتقريب الروابط من بعضها */
+  gap: 8px;
+  margin: 0 auto !important; /* إضافة important تضمن حذف المسافة نهائياً */
+  padding: 0;                /* تصفير الـ padding أيضاً */
   width: fit-content;
+  line-height: 1;
 }
 
-.link-item a {
-  text-decoration: none;
-  font-size: 16px; /* توحيد حجم الخط لتناسق أفضل */
+/* لضمان عدم وجود مسافة كبيرة تحت عنوان "روابط السيرفر" */
+h2 {
+  margin: 10px 0 5px; /* تقليل المسافة تحت العنوان */
 }
 
+/* تنسيق الأيقونات لتكون بحجم الإيموجي */
 .link-icon {
-  width: 20px; /* تصغير الأيقونة لتصبح بحجم الإيموجي تقريباً */
+  width: 20px;
   height: 20px;
   object-fit: contain;
   flex-shrink: 0;
-  display: block;
 }
 
  h2{
